@@ -1,4 +1,31 @@
 1. asm
+      asm允许你在你的代码中直接插入汇编语言指令， 各种不同的编译器为这一个指令允许不一致形式。
+      1、VC采用的是"inter"汇编格式。
+      #include<iostream>
+      int main(void)
+      {
+              int foo = 10, bar = 15;
+              //asm("addl  %%ebx,%%eax"  //AT$A汇编格式 
+              asm("addl  ebx,eax"  //inter汇编格式 
+                                   :"=a"(foo)
+                                   :"a"(foo), "b"(bar)
+                                   );
+              printf("foo+bar=%d\n", foo);
+              return 0;
+      }
+      2、Dec-C++采用的是"AT&A"汇编格式。
+      #include <stdio.h>
+      long a;
+      int main(int argc, char *argv[]) {
+        //0X1A2赋值给ecx寄存器 
+          __asm(" mov $0x1A2, %ecx");
+          //将ecx寄存器赋值给全局变量a 
+          __asm(" mov %eax, a");
+          //输出a值 
+          printf("A is %x\n", a);
+          return 0;
+      }
+
 2. do
 3. if
 4. return
