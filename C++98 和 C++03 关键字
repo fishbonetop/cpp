@@ -68,6 +68,27 @@
 34. struct
 35. using
 36. class
+		#include<iostream>
+		using namespace std;
+		
+		class Box{
+			Public:
+				double length;
+				double breadth;
+				double height;
+				double get(void);
+				void set(double len,double bre,double hei);
+		}
+		double Box::get(void){
+			return length*breadth*height;
+		}
+		void Box::set( double len, double bre, double hei)
+	    {
+    		length = len;
+    		breadth = bre;
+    		height = hei;
+		}
+
 37. extern
 38. operator
 39. switch
